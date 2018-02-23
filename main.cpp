@@ -3,6 +3,7 @@
 #include "binary_search_tree.h"
 #include "b-tree.h"
 #include "red-black-tree.h"
+#include "digraph.h"
 #include "test.h"
 
 using namespace std;
