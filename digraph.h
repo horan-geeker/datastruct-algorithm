@@ -7,18 +7,12 @@
 
 #include <list>
 #include <queue>
-#include "digraph.cpp"
 
 typedef int Vertex;
 
 template<int graph_size>
 class Digraph {
 public:
-    Digraph();
-
-    void read();
-
-    void write();
 
 //    void depth_sort(list <Vertex> &topological_order) {
 //        bool visited[graph_size];
@@ -63,7 +57,7 @@ public:
 
 private:
     int count;
-//    list <Vertex> neighbors[graph_size];
+    list <Vertex> neighbors[graph_size];
 
 //    void recursive_depth_sort(Vertex v, bool visited[], list <Vertex> &topological_order) {
 //        visited[v] = true;
@@ -78,5 +72,4 @@ private:
 //        topological_order.insert(0, v);
 //    }
 };
-
 #endif //TEST_DIGRAPH_H

@@ -10,7 +10,52 @@
 template<class Record>
 class BinarySearchTree : public BinaryTree<Record> {
 public:
-    void test() { cout << "BTS"; }
+    int depth() {
+        return this->recursive_depth(this->root);
+    }
+
+    int recursive_depth(BinaryNode<Record>*& node) {
+        int deep = 0;
+        if (node != NULL) {
+            int lchilddeep = recursive_depth(node->left);
+            int rchilddeep = recursive_depth(node->right);
+            deep = lchilddeep > rchilddeep ? lchilddeep + 1 : rchilddeep + 1;
+        }
+        return deep;
+    }
+
+    void print_node_by_level() {
+        int parentSize = 1, childSize = 0;
+        BinaryNode<Record> * temp;
+        queue<BinaryNode<Record> *> q;
+        q.push(this->root);
+        do
+        {
+            temp = q.front();
+            cout << temp->data << "  ";
+            q.pop();
+
+            if (temp->left != NULL)
+            {
+                q.push(temp->left);
+                childSize ++;
+            }
+            if (temp->right != NULL)
+            {
+                q.push(temp->right);
+                childSize ++;
+            }
+
+            parentSize--;
+            if (parentSize == 0)
+            {
+                parentSize = childSize;
+                childSize = 0;
+                cout << endl;
+            }
+
+        } while (!q.empty());
+    }
 
     /*
      * 如果找到了返回true，找不到返回false
@@ -22,6 +67,7 @@ public:
     void travel_by_depth(void (*callback)(Record &)) {
         recursive_travel(this->root, callback);
     }
+
     void recursive_travel(BinaryNode<Record> *&sub_root, void (*callback)(Record &)) {
         if (sub_root != NULL) {
             (*callback)(sub_root->data);

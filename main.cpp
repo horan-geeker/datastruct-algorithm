@@ -12,16 +12,19 @@ int main() {
 //    BinaryTree<int> *binary_tree = new BinaryTree<int>;
 //    binary_tree->inorder(process_tree_node<int>);
     BinarySearchTree<char> *bst = new BinarySearchTree<char>;
-    bst->insert('a');
-    bst->insert('b');
     bst->insert('c');
-    bst->insert('d');
     bst->insert('e');
+    bst->insert('d');
+    bst->insert('b');
+    bst->insert('a');
     bst->insert('r');
 //    bst->remove(7);
 //    bst->inorder(process_tree_node<char>);
+    // 获取深度
+    cout << bst->depth() << endl;
 
-    //solution();
+    // 按层输出
+    bst->print_node_by_level();
 
     B_Tree<char, 5> *b_tree = new B_Tree<char, 5>;
     b_tree->insert('a');
@@ -55,7 +58,10 @@ int main() {
     a.push_back(4);
     a.push_back(5);
     for (int i : a) {
-        cout<< i;
+        cout << i;
     }
     solution->sortedArrayToBST(a);
+
+//    Digraph *digraph = new Digraph();
+//    digraph->read();
 }
